@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="883.0" style="-fx-background-color: #85C1E9; -fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <TextField layoutX="303.0" layoutY="87.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your Name" />
+      <TextField fx:id="userName" layoutX="303.0" layoutY="87.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your Name" />
       <Text fontSmoothingType="LCD" layoutX="399.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>
             <Font size="24.0" />
@@ -20,7 +20,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="303.0" layoutY="164.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your NID Number" />
+      <TextField fx:id="userNID" layoutX="303.0" layoutY="164.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your NID Number" />
       <Text fontSmoothingType="LCD" layoutX="379.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No">
          <font>
             <Font size="24.0" />
@@ -36,10 +36,10 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="303.0" layoutY="244.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your Phone Number" />
-      <TextField layoutX="303.0" layoutY="325.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your e-mail ID" />
-      <TextField layoutX="303.0" layoutY="416.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter a Password" />
-      <Button layoutX="369.0" layoutY="520.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="126.0" text="Register">
+      <TextField fx:id="Phone" layoutX="303.0" layoutY="244.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your Phone Number" />
+      <TextField fx:id="userMail" layoutX="303.0" layoutY="325.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your e-mail ID" />
+      <TextField fx:id="userPassword" layoutX="303.0" layoutY="416.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter a Password" />
+      <Button fx:id="Register" layoutX="369.0" layoutY="520.0" mnemonicParsing="false" onAction="#userRegister" prefHeight="51.0" prefWidth="126.0" text="Register">
          <font>
             <Font size="24.0" />
          </font>

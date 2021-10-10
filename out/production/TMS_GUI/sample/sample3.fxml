@@ -9,22 +9,22 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller3">
    <children>
       <Label layoutX="75.0" layoutY="294.0" prefHeight="44.0" prefWidth="347.0" text="Choose your Destination">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="402.0" layoutY="304.0" prefHeight="25.0" prefWidth="244.0" />
+      <ChoiceBox fx:id="placeList" layoutX="402.0" layoutY="304.0" prefHeight="25.0" prefWidth="244.0" />
       <Label layoutX="75.0" layoutY="456.0" prefHeight="44.0" prefWidth="347.0" text="Pick a date">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <DatePicker layoutX="404.0" layoutY="465.0" prefHeight="25.0" prefWidth="244.0" />
-      <TextArea layoutX="75.0" layoutY="40.0" prefHeight="217.0" prefWidth="650.0" />
-      <Button layoutX="372.0" layoutY="538.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Submit">
+      <DatePicker fx:id="pickDate" layoutX="404.0" layoutY="465.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextArea fx:id="spotDetails" layoutX="75.0" layoutY="40.0" prefHeight="217.0" prefWidth="650.0" />
+      <Button fx:id="Submit" layoutX="372.0" layoutY="538.0" mnemonicParsing="false" onAction="#submitRequest" prefHeight="34.0" prefWidth="64.0" text="Submit">
          <font>
             <Font size="14.0" />
          </font>
