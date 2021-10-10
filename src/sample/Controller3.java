@@ -17,8 +17,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 class PlacePopulation{
-   private String place;
-   private String population;
+    String place;
+    String population;
 
     public PlacePopulation(String place, String population) {
         this.place = place;
@@ -69,8 +69,8 @@ public class Controller3 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         placeList.getItems().addAll(places); // inserting place names to the choice boxs
+        ArrayList<PlacePopulation> pp =new ArrayList<>();
         try {
-            ArrayList<PlacePopulation> pp =new ArrayList<>();
             // reading the place names and allowed tourist population of it
             while (true){
                 String placeName=cReader.readLine();
@@ -83,8 +83,18 @@ public class Controller3 implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        LocalDate currentdDate1 =  LocalDate.now();
-        LocalDate currentDatePlus1 = currentdDate1.plusDays(23);
-        System.out.println(currentDatePlus1);
+        spotDetails.appendText("Spot name    "+"Date   "+"   Available slots"+"\n");
+        for (PlacePopulation p : pp){
+            int count = 0;
+            LocalDate currentDate1 =  LocalDate.now();
+            while (true){
+                LocalDate currentDatePlus1 = currentDate1.plusDays(count);
+                int totalPeople = Integer.parseInt(p.population);
+                spotDetails.appendText("\n"+p.place+"   "+currentDatePlus1+"    "+totalPeople/5);
+                count+=3;
+                if(count>15) break;
+            }
+
+        }
     }
 }

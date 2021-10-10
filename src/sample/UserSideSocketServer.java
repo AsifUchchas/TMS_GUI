@@ -13,6 +13,7 @@ public class UserSideSocketServer {
             Socket sc = serverSocket.accept();
             OutputStreamWriter o = new OutputStreamWriter(sc.getOutputStream());
             BufferedWriter sWriter = new BufferedWriter(o);
+
             InputStreamReader isr = new InputStreamReader(sc.getInputStream());
             BufferedReader sReader = new BufferedReader(isr);
             Scanner scn =new Scanner(new File("src/sample/Place_population"));
