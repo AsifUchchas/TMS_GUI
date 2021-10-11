@@ -3,14 +3,12 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,6 +21,17 @@ class PlacePopulation{
     public PlacePopulation(String place, String population) {
         this.place = place;
         this.population = population;
+    }
+}
+class placeDatePopulation{
+    String placeName;
+    int PeopleAmount;
+    LocalDate date;
+
+    public placeDatePopulation(String placeName, int peopleAmount, LocalDate date) {
+        this.placeName = placeName;
+        PeopleAmount = peopleAmount;
+        this.date = date;
     }
 }
 public class Controller3 implements Initializable {
@@ -49,20 +58,35 @@ public class Controller3 implements Initializable {
 
     @FXML
     private TextArea spotDetails;
-
+    @FXML
+    private Label result;
     @FXML
     private Button Submit;
 
     private String[] places={"Cox's Bazar","Saint martin","Sajek","Bandarban"};
-
+    ArrayList<placeDatePopulation> pdp = new ArrayList<>();
     @FXML
     void submitRequest(ActionEvent event) {
-        String place = placeList.getValue();  // getting the value of the choosen place
-        //System.out.println(place);
-        LocalDate tourDate = pickDate.getValue(); // getting the date
-        String formattedDate = tourDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
-        //System.out.println(formattedDate);
 
+            String place = placeList.getValue();  // getting the value of the choosen place
+            LocalDate tourDate = pickDate.getValue(); // getting the date
+
+            for (placeDatePopulation p :pdp){
+                if(place.equals(p.placeName)){
+                    if(tourDate.compareTo(p.date) == 0 && p.PeopleAmount>0) {
+                        p.PeopleAmount--;
+                        result.setText("   Congratulations");
+                        break;
+                    }else {
+                        result.setText("Please choose another date. Thanks");
+                    }
+                }
+            }
+            spotDetails.clear();
+            spotDetails.appendText("Spot name    "+"Date   "+"   Available slots"+"\n");
+            for (placeDatePopulation p : pdp){
+                spotDetails.appendText("\n"+p.placeName+"   "+p.date+"    "+p.PeopleAmount);
+            }
 
     }
 
@@ -88,9 +112,10 @@ public class Controller3 implements Initializable {
             int count = 0;
             LocalDate currentDate1 =  LocalDate.now();
             while (true){
-                LocalDate currentDatePlus1 = currentDate1.plusDays(count);
+                LocalDate currentDatePlus = currentDate1.plusDays(count);
                 int totalPeople = Integer.parseInt(p.population);
-                spotDetails.appendText("\n"+p.place+"   "+currentDatePlus1+"    "+totalPeople/5);
+                spotDetails.appendText("\n"+p.place+"   "+currentDatePlus+"    "+totalPeople/5);
+                pdp.add(new placeDatePopulation(p.place,totalPeople/5,currentDatePlus));
                 count+=3;
                 if(count>15) break;
             }
