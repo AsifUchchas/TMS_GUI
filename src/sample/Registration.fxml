@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="883.0" style="-fx-background-color: #85C1E9; -fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="883.0" style="-fx-background-color: #85C1E9; -fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RegistrationController">
    <children>
       <TextField fx:id="userName" layoutX="303.0" layoutY="87.0" prefHeight="32.0" prefWidth="258.0" promptText="Enter Your Name" />
       <Text fontSmoothingType="LCD" layoutX="399.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
