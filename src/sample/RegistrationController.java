@@ -71,7 +71,7 @@ public class RegistrationController {
             User user = new User(userName.getText(), userNID.getText(), Phone.getText(), userMail.getText(), userPassword.getText());
             writeData(user);
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            Main.changeScene(stage, "LoginScene.fxml");
+            Main.changeScene(stage, "RegSuccessScene.fxml");
         }
         else
             errorMsg.setText("Something is wrong!");
