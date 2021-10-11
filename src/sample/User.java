@@ -1,6 +1,8 @@
 package sample;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     protected String name;
     protected String nid;
     protected String phone;
@@ -9,7 +11,12 @@ public class User {
     protected int userId;
     protected static int totalUser = 0;
 
-    public User() {
+    public User(String name, String nid, String phone, String email, String passwords) {
+        this.name = name;
+        this.nid = nid;
+        this.phone = phone;
+        this.email = email;
+        this.passwords = passwords;
         this.userId = totalUser;
         totalUser++;
     }
