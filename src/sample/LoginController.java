@@ -63,8 +63,8 @@ public class LoginController {
         String response = receiveStr.readLine();
         if (response.equals("SUCCESS!\n")) {
             List<String> info = (List<String>) receiveObj.readObject();
-            User user = new User(info.get(1), info.get(2), info.get(3), info.get(4), info.get(5), info.get(6));
-
+            User user = new User(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
+            write(user);    // writing info to a temp file
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             Main.changeScene(stage, "sample3.fxml");
         }
@@ -72,5 +72,20 @@ public class LoginController {
             errorMsg.setText("Login Failed!");
         }
 
+    }
+
+    public static void write(User user) {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("tempData.txt"));
+
+            bw.write(user.getName() + ", ");
+            bw.write(user.getNid() + ", ");
+            bw.write(user.getPhone() + ", ");
+            bw.write(user.getEmail() + ", ");
+            bw.write(user.getType() + "\n");
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
