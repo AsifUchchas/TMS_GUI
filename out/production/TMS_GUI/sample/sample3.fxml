@@ -8,32 +8,28 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller3">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="800.0" style="-fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="404.0" layoutY="40.0" prefHeight="44.0" prefWidth="347.0" text="Choose your Destination">
+      <Label layoutX="75.0" layoutY="294.0" prefHeight="44.0" prefWidth="347.0" text="Choose your Destination">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="placeList" layoutX="403.0" layoutY="110.0" prefHeight="25.0" prefWidth="244.0" />
-      <Label layoutX="404.0" layoutY="171.0" prefHeight="44.0" prefWidth="347.0" text="Pick a date">
+      <ChoiceBox layoutX="402.0" layoutY="304.0" prefHeight="25.0" prefWidth="244.0" />
+      <Label layoutX="75.0" layoutY="456.0" prefHeight="44.0" prefWidth="347.0" text="Pick a date">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <DatePicker fx:id="pickDate" layoutX="403.0" layoutY="245.0" prefHeight="25.0" prefWidth="244.0" />
-      <TextArea fx:id="spotDetails" layoutX="82.0" layoutY="100.0" prefHeight="478.0" prefWidth="269.0" />
-      <Button fx:id="Submit" layoutX="506.0" layoutY="449.0" mnemonicParsing="false" onAction="#submitRequest" prefHeight="34.0" prefWidth="64.0" text="Submit">
+      <DatePicker layoutX="404.0" layoutY="465.0" prefHeight="25.0" prefWidth="244.0" />
+      <TextArea layoutX="75.0" layoutY="40.0" prefHeight="217.0" prefWidth="650.0" />
+      <Button layoutX="372.0" layoutY="538.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" text="Submit">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="449.0" layoutY="612.0" prefHeight="65.0" prefWidth="179.0" text="Congratulations">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="149.0" layoutY="45.0" prefHeight="17.0" prefWidth="135.0" text="Slot Details">
+      <Label layoutX="295.0" layoutY="618.0" prefHeight="65.0" prefWidth="179.0" text="Congratulations">
          <font>
             <Font size="24.0" />
          </font>

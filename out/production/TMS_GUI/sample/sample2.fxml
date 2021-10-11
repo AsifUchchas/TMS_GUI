@@ -13,7 +13,7 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <TextField fx:id="userLoginMail" layoutX="93.0" layoutY="232.0" prefHeight="25.0" prefWidth="240.0" />
+      <TextField layoutX="93.0" layoutY="232.0" prefHeight="25.0" prefWidth="240.0" />
       <Text layoutX="93.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
          <font>
             <Font size="24.0" />
@@ -24,13 +24,13 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="userLoginPassword" layoutX="93.0" layoutY="294.0" prefHeight="25.0" prefWidth="240.0" />
-      <Button fx:id="Login" layoutX="93.0" layoutY="334.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="25.0" prefWidth="58.0" text="Login" />
+      <TextField layoutX="93.0" layoutY="294.0" prefHeight="25.0" prefWidth="240.0" />
+      <Button layoutX="93.0" layoutY="334.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Login" />
       <Text layoutX="80.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you don't have an account please register" wrappingWidth="358.96484375">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="439.0" layoutY="450.0" mnemonicParsing="false" onAction="#linkRegister" text="Register" />
+      <Button layoutX="439.0" layoutY="450.0" mnemonicParsing="false" text="Register" />
    </children>
 </AnchorPane>
