@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegistrationController {
 
@@ -68,17 +70,26 @@ public class RegistrationController {
         }
 
         if (flag == 0) {
-            User user = new User(userName.getText(), userNID.getText(), Phone.getText(), userMail.getText(), userPassword.getText());
-            writeData(user);
-            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            Main.changeScene(stage, "RegSuccessScene.fxml");
+            List<String> info = new ArrayList<>();
+            info.add(userName.getText());
+            info.add(userNID.getText());
+            info.add(userMail.getText());
+            info.add(userPassword.getText());
+            info.add(Phone.getText());
+            if (writeData(info)) {
+                Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                Main.changeScene(stage, "RegSuccessScene.fxml");
+            }
+            else {
+                errorMsg.setText("USER ALREADY EXIST!");
+            }
         }
         else
             errorMsg.setText("Something is wrong!");
 
     }
 
-    void writeData(User user){
+    boolean writeData(List<String> list){
         try {
             Socket sc = new Socket("localhost", 6600);
 
@@ -88,14 +99,17 @@ public class RegistrationController {
             InputStreamReader isr = new InputStreamReader(sc.getInputStream());
             BufferedReader cReader = new BufferedReader(isr);
 
-            send.writeObject(user);
+            send.writeObject(list);
 
             String res = cReader.readLine();
-            errorMsg.setText(res);
+            sc.close();
+            if (res.equals("FAILED!\n"))
+                return false;
+            return true;
         }
         catch (IOException e){
             errorMsg.setText("Something is wrong!");
         }
-
+        return false;
     }
 }
