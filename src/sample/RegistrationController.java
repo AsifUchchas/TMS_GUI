@@ -71,11 +71,13 @@ public class RegistrationController {
 
         if (flag == 0) {
             List<String> info = new ArrayList<>();
+            info.add("Registration");
             info.add(userName.getText());
             info.add(userNID.getText());
             info.add(userMail.getText());
             info.add(userPassword.getText());
             info.add(Phone.getText());
+            info.add("User");
             if (writeData(info)) {
                 Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                 Main.changeScene(stage, "RegSuccessScene.fxml");

@@ -1,20 +1,21 @@
 package sample;
-
 import java.io.Serializable;
 
 public class User implements Serializable {
-    protected String name;
-    protected String nid;
-    protected String phone;
-    protected String email;
-    protected String passwords;
+    private String name;
+    private String nid;
+    private String phone;
+    private String email;
+    private String passwords;
+    private String type;
 
-    public User(String name, String nid, String phone, String email, String passwords) {
+    public User(String name, String nid, String phone, String email, String passwords, String type) {
         this.name = name;
         this.nid = nid;
         this.phone = phone;
         this.email = email;
         this.passwords = passwords;
+        this.type = type;
     }
 
     public String getName() {
@@ -55,5 +56,13 @@ public class User implements Serializable {
 
     public void setPasswords(String passwords) {
         this.passwords = passwords;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
