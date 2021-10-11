@@ -3,6 +3,7 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class RegistrationController {
@@ -24,6 +25,9 @@ public class RegistrationController {
 
     @FXML
     private Button Register;
+
+    @FXML
+    private Label errorMsg;
 
     @FXML
     void userRegister(ActionEvent event) {
