@@ -3,7 +3,6 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -72,7 +71,7 @@ public class RegistrationController {
             User user = new User(userName.getText(), userNID.getText(), Phone.getText(), userMail.getText(), userPassword.getText());
             writeData(user);
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            Main.changeScene(stage, "Login.fxml");
+            Main.changeScene(stage, "LoginScene.fxml");
         }
         else
             errorMsg.setText("Something is wrong!");
