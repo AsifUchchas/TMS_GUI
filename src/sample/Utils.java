@@ -7,14 +7,28 @@ public class Utils {
     public static boolean isValidEmail(String email) {
         String domainName;
         String[] dData;
-        String user = email.split("@")[0];
-        String domain = email.split("@")[1];
+        String user;
+        String domain;
+
+        try {
+            user = email.split("@")[0];
+            domain = email.split("@")[1];
+        }
+        catch (IndexOutOfBoundsException e) {
+            return false;
+        }
 
 
-        // check special chars
+        // count '@' occurrence
         int countAt = countChar(email, '@');
         if (countAt != 1) return false;
 
+        // count '.' occurrence
+        int countDot = countChar(domain, '.');
+        if (countDot < 1) return false;
+
+
+        // check special chars
         // checking user name
         if (isContainInvalidChar(user) || isContainInvalidChar(domain)) return false;
 
@@ -46,6 +60,14 @@ public class Utils {
         return true;
     }
 
+
+    public static boolean isValidPhone(String phone) {
+        for (int i = 0; i < phone.length(); i++) {
+            char c = phone.charAt(i);
+            if (!isNum(c)) return false;
+        }
+        return true;
+    }
 
     // **********************************************************
     // HELPER FUNCTIONS
