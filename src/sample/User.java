@@ -8,8 +8,6 @@ public class User implements Serializable {
     protected String phone;
     protected String email;
     protected String passwords;
-    protected int userId;
-    protected static int totalUser = 0;
 
     public User(String name, String nid, String phone, String email, String passwords) {
         this.name = name;
@@ -17,8 +15,6 @@ public class User implements Serializable {
         this.phone = phone;
         this.email = email;
         this.passwords = passwords;
-        this.userId = totalUser;
-        totalUser++;
     }
 
     public String getName() {
@@ -59,21 +55,5 @@ public class User implements Serializable {
 
     public void setPasswords(String passwords) {
         this.passwords = passwords;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public static int getTotalUser() {
-        return totalUser;
-    }
-
-    public static void setTotalUser(int totalUser) {
-        User.totalUser = totalUser;
     }
 }
