@@ -35,46 +35,46 @@ public class LoginController {
 
     @FXML
     void userLogin(ActionEvent event) throws Exception {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        User admin = new User(null, null, "root@email.com", "Abcd1234@", null, "Admin");
         List<String> cred = new ArrayList<>();
         cred.add("Login");
         cred.add(userLoginMail.getText());
         cred.add(userLoginPassword.getText());
-
-        Socket sc = new Socket("localhost", 6600);
-
-        OutputStream oo = sc.getOutputStream();
-        ObjectOutputStream sendObj = new ObjectOutputStream(oo);
-
-        InputStream inputStream = sc.getInputStream();
-        ObjectInputStream receiveObj = new ObjectInputStream(inputStream);
-
-        OutputStreamWriter o = new OutputStreamWriter(sc.getOutputStream());
-        BufferedWriter sendStr = new BufferedWriter(o);
-
-        InputStreamReader isr = new InputStreamReader(sc.getInputStream());
-        BufferedReader receiveStr = new BufferedReader(isr);
-
-        // sending credentials
-        sendObj.writeObject(cred);
-
-        // reading response
-        String response = receiveStr.readLine();
-        System.out.println("Test 2");
-        if (response.equals("SUCCESS!")) {
-            System.out.println("Test 3");
-            List<String> info = (List<String>) receiveObj.readObject();
-            User user = new User(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
-            write(user);    // writing info to a temp file
-            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            if (user.getType().equals("Admin"))
-                Main.changeScene(stage, "AdminPanelScene.fxml");
-            else
-                Main.changeScene(stage, "sample3.fxml");
-        }
+        
+        if (cred.get(1).equals(admin.getEmail()) && cred.get(2).equals(admin.getPasswords()))
+            Main.changeScene(stage, "AdminPanelScene.fxml");
         else {
-            errorMsg.setText("Login Failed!");
-        }
+            Socket sc = new Socket("localhost", 6600);
 
+            OutputStream oo = sc.getOutputStream();
+            ObjectOutputStream sendObj = new ObjectOutputStream(oo);
+
+            InputStream inputStream = sc.getInputStream();
+            ObjectInputStream receiveObj = new ObjectInputStream(inputStream);
+
+            OutputStreamWriter o = new OutputStreamWriter(sc.getOutputStream());
+            BufferedWriter sendStr = new BufferedWriter(o);
+
+            InputStreamReader isr = new InputStreamReader(sc.getInputStream());
+            BufferedReader receiveStr = new BufferedReader(isr);
+
+            // sending credentials
+            sendObj.writeObject(cred);
+
+            // reading response
+            String response = receiveStr.readLine();
+            System.out.println("Test 2");
+            if (response.equals("SUCCESS!")) {
+                System.out.println("Test 3");
+                List<String> info = (List<String>) receiveObj.readObject();
+                User user = new User(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
+                write(user);    // writing info to a temp file
+                Main.changeScene(stage, "sample3.fxml");
+            } else {
+                errorMsg.setText("Login Failed!");
+            }
+        }
     }
 
     public static void write(User user) {
