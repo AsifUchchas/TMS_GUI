@@ -66,7 +66,10 @@ public class LoginController {
             User user = new User(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
             write(user);    // writing info to a temp file
             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-            Main.changeScene(stage, "sample3.fxml");
+            if (user.getType().equals("Admin"))
+                Main.changeScene(stage, "AdminPanelScene.fxml");
+            else
+                Main.changeScene(stage, "sample3.fxml");
         }
         else {
             errorMsg.setText("Login Failed!");
