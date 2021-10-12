@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="883.0" style="-fx-background-color: #85C1E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AdminPanelController">
+   <children>
+      <TextField fx:id="placeName" layoutX="80.0" layoutY="256.0" prefHeight="47.0" prefWidth="308.0" />
+      <TextField fx:id="numberOfPeople" layoutX="495.0" layoutY="256.0" prefHeight="47.0" prefWidth="308.0" />
+      <Button layoutX="388.0" layoutY="409.0" mnemonicParsing="false" onAction="#manipulateInformation" text="Submit">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="216.0" layoutY="72.0" text="Admin Manipulation" underline="true">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="217.0" text="Place Name">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="495.0" layoutY="217.0" text="Number of People">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
