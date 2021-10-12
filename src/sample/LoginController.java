@@ -80,8 +80,8 @@ public class LoginController {
 
             bw.write(user.getName() + ", ");
             bw.write(user.getNid() + ", ");
-            bw.write(user.getPhone() + ", ");
             bw.write(user.getEmail() + ", ");
+            bw.write(user.getPhone() + ", ");
             bw.write(user.getType() + "\n");
             bw.close();
         } catch (IOException e) {
