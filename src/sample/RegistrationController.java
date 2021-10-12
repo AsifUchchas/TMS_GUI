@@ -42,31 +42,31 @@ public class RegistrationController {
         String data;
 
         if (userName.getText().length() < 2) {
-            errorMsg.setText("INVALID USER NAME!");
+            //errorMsg.setText("INVALID USER NAME!");
             flag = 1;
         }
 
         // Just guess
         if (userNID.getText().length() < 5 && flag == 0) {
-            errorMsg.setText("INVALID NID!");
-            flag = 1;
+            //errorMsg.setText("INVALID NID!");
+            flag = 2;
         }
 
         if ((Phone.getText().length() < 5 || !Utils.isValidPhone(Phone.getText())) && flag == 0) {
-            errorMsg.setText("INVALID PHONE NUMBER!");
-            flag = 1;
+            //errorMsg.setText("INVALID PHONE NUMBER!");
+            flag = 3;
         }
 
         data = userMail.getText();
         if (!Utils.isValidEmail(data) && flag == 0) {
-            errorMsg.setText("INVALID EMAIL!");
-            flag = 1;
+            //errorMsg.setText("INVALID EMAIL!");
+            flag = 4;
         }
 
         data = userPassword.getText();
         if (!Utils.isValidPass(data) && flag == 0) {
-            errorMsg.setText("INVALID PASSWORDS!");
-            flag = 1;
+            //errorMsg.setText("INVALID PASSWORDS!");
+            flag = 5;
         }
 
         if (flag == 0) {
@@ -83,11 +83,24 @@ public class RegistrationController {
                 Main.changeScene(stage, "RegSuccessScene.fxml");
             }
             else {
+
                 errorMsg.setText("USER ALREADY EXIST!");
             }
         }
-        else
-            errorMsg.setText("Something is wrong!");
+        else {
+            //errorMsg.setText("Something is wrong!");
+            if(flag ==1)
+                errorMsg.setText("INVALID USER NAME!");
+            if(flag ==2)
+                errorMsg.setText("INVALID NID!");
+            if(flag ==3)
+                errorMsg.setText("INVALID PHONE NUMBER!");
+            if(flag ==4)
+                errorMsg.setText("INVALID EMAIL!");
+            if(flag ==5)
+                errorMsg.setText("INVALID PASSWORDS!");
+
+        }
     }
 
     boolean writeData(List<String> list){
