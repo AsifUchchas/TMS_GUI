@@ -35,22 +35,21 @@ public class LoginController {
 
     @FXML
     void userLogin(ActionEvent event) throws Exception {
-
         List<String> cred = new ArrayList<>();
         cred.add("Login");
         cred.add(userLoginMail.getText());
         cred.add(userLoginPassword.getText());
 
-
         Socket sc = new Socket("localhost", 6600);
-        OutputStreamWriter o = new OutputStreamWriter(sc.getOutputStream());
-        BufferedWriter sendStr = new BufferedWriter(o);
+
+        OutputStream oo = sc.getOutputStream();
+        ObjectOutputStream sendObj = new ObjectOutputStream(oo);
 
         InputStream inputStream = sc.getInputStream();
         ObjectInputStream receiveObj = new ObjectInputStream(inputStream);
 
-        OutputStream oo = sc.getOutputStream();
-        ObjectOutputStream sendObj = new ObjectOutputStream(oo);
+        OutputStreamWriter o = new OutputStreamWriter(sc.getOutputStream());
+        BufferedWriter sendStr = new BufferedWriter(o);
 
         InputStreamReader isr = new InputStreamReader(sc.getInputStream());
         BufferedReader receiveStr = new BufferedReader(isr);
@@ -58,10 +57,11 @@ public class LoginController {
         // sending credentials
         sendObj.writeObject(cred);
 
-
         // reading response
         String response = receiveStr.readLine();
-        if (response.equals("SUCCESS!\n")) {
+        System.out.println("Test 2");
+        if (response.equals("SUCCESS!")) {
+            System.out.println("Test 3");
             List<String> info = (List<String>) receiveObj.readObject();
             User user = new User(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
             write(user);    // writing info to a temp file
