@@ -88,7 +88,6 @@ public class RegistrationController {
         }
         else
             errorMsg.setText("Something is wrong!");
-
     }
 
     boolean writeData(List<String> list){
