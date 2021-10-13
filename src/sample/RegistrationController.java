@@ -83,7 +83,6 @@ public class RegistrationController {
                 Main.changeScene(stage, "RegSuccessScene.fxml");
             }
             else {
-
                 errorMsg.setText("USER ALREADY EXIST!");
             }
         }
@@ -116,8 +115,9 @@ public class RegistrationController {
             send.writeObject(list);
 
             String res = cReader.readLine();
+            System.out.println(res);
             sc.close();
-            if (res.equals("FAILED!\n"))
+            if (res.contains("FAILED!"))
                 return false;
             return true;
         }
