@@ -18,7 +18,6 @@ public class Utils {
             return false;
         }
 
-
         // count '@' occurrence
         int countAt = countChar(email, '@');
         if (countAt != 1) return false;
@@ -27,9 +26,8 @@ public class Utils {
         int countDot = countChar(domain, '.');
         if (countDot < 1) return false;
 
-
         // check special chars
-        // checking user name
+        // checking username
         if (isContainInvalidChar(user) || isContainInvalidChar(domain)) return false;
 
         // domain & domain length
@@ -59,7 +57,6 @@ public class Utils {
 
         return true;
     }
-
 
     public static boolean isValidPhone(String phone) {
         for (int i = 0; i < phone.length(); i++) {

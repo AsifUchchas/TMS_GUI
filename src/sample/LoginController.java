@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.plaf.IconUIResource;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;

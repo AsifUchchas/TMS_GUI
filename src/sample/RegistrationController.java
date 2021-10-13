@@ -41,34 +41,29 @@ public class RegistrationController {
         int flag = 0;
         String data;
 
-        if (userName.getText().length() < 2) {
-            //errorMsg.setText("INVALID USER NAME!");
+        // Username length
+        if (userName.getText().length() < 2)
             flag = 1;
-        }
 
-        // Just guess
-        if (userNID.getText().length() < 5 && flag == 0) {
-            //errorMsg.setText("INVALID NID!");
+        // NID Length (Just guess)
+        if (userNID.getText().length() < 5 && flag == 0)
             flag = 2;
-        }
 
-        if ((Phone.getText().length() < 5 || !Utils.isValidPhone(Phone.getText())) && flag == 0) {
-            //errorMsg.setText("INVALID PHONE NUMBER!");
+        // Phone Validation
+        if ((Phone.getText().length() < 5 || !Utils.isValidPhone(Phone.getText())) && flag == 0)
             flag = 3;
-        }
 
+        // Email Validation
         data = userMail.getText();
-        if (!Utils.isValidEmail(data) && flag == 0) {
-            //errorMsg.setText("INVALID EMAIL!");
+        if (!Utils.isValidEmail(data) && flag == 0)
             flag = 4;
-        }
 
+        // Passwords Validation
         data = userPassword.getText();
-        if (!Utils.isValidPass(data) && flag == 0) {
-            //errorMsg.setText("INVALID PASSWORDS!");
+        if (!Utils.isValidPass(data) && flag == 0)
             flag = 5;
-        }
 
+        // if everything valid
         if (flag == 0) {
             List<String> info = new ArrayList<>();
             info.add("Registration");
@@ -78,7 +73,7 @@ public class RegistrationController {
             info.add(userPassword.getText());
             info.add(Phone.getText());
             info.add("User");
-            if (writeData(info)) {
+            if (sendData(info)) {
                 Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                 Main.changeScene(stage, "RegSuccessScene.fxml");
             }
@@ -87,22 +82,22 @@ public class RegistrationController {
             }
         }
         else {
-            //errorMsg.setText("Something is wrong!");
-            if(flag ==1)
+            if(flag == 1)
                 errorMsg.setText("INVALID USER NAME!");
-            if(flag ==2)
+            else if(flag == 2)
                 errorMsg.setText("INVALID NID!");
-            if(flag ==3)
+            else if(flag == 3)
                 errorMsg.setText("INVALID PHONE NUMBER!");
-            if(flag ==4)
+            else if(flag == 4)
                 errorMsg.setText("INVALID EMAIL!");
-            if(flag ==5)
+            else if(flag == 5)
                 errorMsg.setText("INVALID PASSWORDS!");
-
+            else
+                errorMsg.setText("Something is wrong!");
         }
     }
 
-    boolean writeData(List<String> list){
+    boolean sendData(List<String> list){
         try {
             Socket sc = new Socket("localhost", 6600);
 
@@ -115,7 +110,7 @@ public class RegistrationController {
             send.writeObject(list);
 
             String res = cReader.readLine();
-            System.out.println(res);
+//            System.out.println(res);  // debug
             sc.close();
             if (res.contains("FAILED!"))
                 return false;
