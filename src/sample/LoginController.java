@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.plaf.IconUIResource;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -43,8 +44,13 @@ public class LoginController {
         cred.add(userLoginPassword.getText());
         
         if (cred.get(1).equals(admin.getEmail()) && cred.get(2).equals(admin.getPasswords()))
+        {
+            System.out.println(" - Admin user detected");
+            System.out.println(" - Logging in to Admin Control Panel");
             Main.changeScene(stage, "AdminPanelScene.fxml");
+        }
         else {
+            System.out.println(" - Connecting to server");
             Socket sc = new Socket("localhost", 6600);
 
             OutputStream oo = sc.getOutputStream();
@@ -60,16 +66,19 @@ public class LoginController {
             BufferedReader receiveStr = new BufferedReader(isr);
 
             // sending credentials
+            System.out.println(" - Sending credentials");
             sendObj.writeObject(cred);
 
             // reading response
             String response = receiveStr.readLine();
-            System.out.println("Test 2");
+            System.out.println(" - Received " + response + " response");
             if (response.equals("SUCCESS!")) {
-                System.out.println("Test 3");
                 List<String> info = (List<String>) receiveObj.readObject();
+                System.out.println(" - Received logged user info from server");
                 User user = new User(info.get(0), info.get(1), info.get(2), info.get(3), info.get(4), info.get(5));
+                System.out.println(" - Saving user info for later use");
                 write(user);    // writing info to a temp file
+                System.out.println(" - Logging in to User Control Panel");
                 Main.changeScene(stage, "sample3.fxml");
             } else {
                 errorMsg.setText("Login Failed!");
